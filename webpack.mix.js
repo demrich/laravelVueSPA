@@ -12,4 +12,16 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .disableNotifications()
+   .browserSync({proxy:'http://spa.localhost',
+    files: [
+        'public/lib/css/app.css',  // Generated .css file
+        'public/lib/js/app.js',    // Generated .js file
+        'public/**/*.+(html|php)',           // Generic .html and/or .php files [no specific platform]
+        'laravel/resources/views/**/*.php',  // Laravel-specific view files
+        'craft/templates/**/*.+(html|twig)'  // Craft-specific templates, as html and/or twig
+    ]
+
+
+});
