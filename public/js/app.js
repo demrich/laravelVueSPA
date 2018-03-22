@@ -24959,6 +24959,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_Home__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_UsersIndex__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_UsersIndex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_UsersIndex__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_CrudsIndex_vue__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__views_CrudsIndex_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__views_CrudsIndex_vue__);
 
 __webpack_require__(16);
 
@@ -24968,6 +24970,7 @@ window.Vue = __webpack_require__(13);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
 
 
 
@@ -24988,6 +24991,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/users',
         name: 'users.index',
         component: __WEBPACK_IMPORTED_MODULE_5__views_UsersIndex___default.a
+    }, {
+        path: '/cruds',
+        name: 'cruds.index',
+        component: __WEBPACK_IMPORTED_MODULE_6__views_CrudsIndex_vue___default.a
     }]
 });
 
@@ -49931,6 +49938,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -49958,6 +49967,10 @@ var render = function() {
         _vm._v(" |\n        "),
         _c("router-link", { attrs: { to: { name: "users.index" } } }, [
           _vm._v("Users")
+        ]),
+        _vm._v(" |\n        "),
+        _c("router-link", { attrs: { to: { name: "cruds.index" } } }, [
+          _vm._v("The Cruds")
         ])
       ],
       1
@@ -50371,6 +50384,324 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/CrudComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8aedbdc8", Component.options)
+  } else {
+    hotAPI.reload("data-v-8aedbdc8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    image: function image() {
+      return '/images/' + this.color + '.png';
+    }
+  },
+  methods: {
+    update: function update(val) {
+      this.$emit('update', this.id, val.target.selectedOptions[0].value);
+    },
+    del: function del() {
+      this.$emit('delete', this.id);
+    }
+  },
+  props: ['id', 'color', 'name'],
+  filters: {
+    properCase: function properCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "crud" }, [
+    _c("div", { staticClass: "col-1" }, [
+      _c("img", { attrs: { src: _vm.image } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-2" }, [
+      _c("h3", [_vm._v("Name: " + _vm._s(_vm._f("properCase")(_vm.name)))]),
+      _vm._v(" "),
+      _c(
+        "select",
+        { on: { change: _vm.update } },
+        _vm._l(["red", "green"], function(col) {
+          return _c(
+            "option",
+            {
+              key: col,
+              domProps: {
+                value: col,
+                selected: col === _vm.color ? "selected" : ""
+              }
+            },
+            [_vm._v(_vm._s(_vm._f("properCase")(col)))]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c("button", { on: { click: _vm.del } }, [_vm._v("Delete")])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8aedbdc8", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/CrudsIndex.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47eb1720", Component.options)
+  } else {
+    hotAPI.reload("data-v-47eb1720", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "cruds" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._l(_vm.cruds, function(crud) {
+        return _c(
+          "crud-component",
+          _vm._b(
+            { key: crud.id, on: { update: _vm.update, delete: _vm.del } },
+            "crud-component",
+            crud,
+            false
+          )
+        )
+      }),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.create()
+              }
+            }
+          },
+          [_vm._v("Add")]
+        )
+      ])
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "heading" }, [_c("h1", [_vm._v("Cruds")])])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-47eb1720", module.exports)
+  }
+}
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CrudComponent_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CrudComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CrudComponent_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+function Crud(_ref) {
+  var id = _ref.id,
+      color = _ref.color,
+      name = _ref.name;
+
+  this.id = id;
+  this.color = color;
+  this.name = name;
+}
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      cruds: []
+    };
+  },
+
+  methods: {
+    create: function create() {
+      // To do
+    },
+    read: function read() {
+      // To do
+    },
+    update: function update(id, color) {
+      // To do
+    },
+    del: function del(id) {
+      // To do
+    }
+  },
+  components: {
+    CrudComponent: __WEBPACK_IMPORTED_MODULE_0__CrudComponent_vue___default.a
+  }
+});
 
 /***/ })
 /******/ ]);

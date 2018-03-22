@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::namespace('Api')->group(function () {
     Route::get('/users', 'UsersController@index');
 });
+
+Route::resource('/cruds', 'CrudsController', [
+    'except' => ['edit', 'show', 'store']
+  ]);

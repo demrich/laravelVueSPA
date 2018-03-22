@@ -12,6 +12,7 @@ import App from './views/App'
 import Hello from './views/Hello'
 import Home from './views/Home'
 import UsersIndex from './views/UsersIndex'
+import CrudsIndex from './views/CrudsIndex.vue'
 
 const router = new VueRouter({
     mode: 'history',
@@ -30,6 +31,11 @@ const router = new VueRouter({
             path: '/users',
             name: 'users.index',
             component: UsersIndex,
+        },
+        {
+            path: '/cruds',
+            name: 'cruds.index',
+            component: CrudsIndex,
         },
         
     ],
